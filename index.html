@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Messenger</title>
 </head>
 <style>
     body {
@@ -22,7 +22,20 @@
         text-align: center;
     }
     img {
-        
+    width: 50px;
+        display: inline-block;
+        border-radius: 50%;
+    }
+    i {
+        border-radius: 30%;
+        background-color: deepskyblue;
+        padding: 10px 20px 10px 20px;
+    }
+    p {
+        display: inline-block;
+    }
+    #logo {
+        width: 50px;
     }
 
 </style>
@@ -42,18 +55,20 @@
 </script>
 
 <main>
-    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/wiOtxI3emiC.png" alt="messenger">
-    <h1>Min chat</h1>
-    <form id="skjema">
-        <label for="inpAvsender">Hva heter du?</label>
-        <input type="text" id="inpAvsender" required>
-        <label for="inpMelding">Hva vil du si?</label>
-        <input type="text" id="inpMelding" required>
-        <button type="submit">Send</button>
-    </form>
+
+    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/wiOtxI3emiC.png" alt="messenger" id="logo">
+    <h1>Messages</h1>
     <article id="txtMeldinger">
 
     </article>
+    <form id="skjema">
+        <label for="inpAvsender">Profilbilde</label>
+        <input type="text" id="inpAvsender" required>
+        <label for="inpMelding">Melding</label>
+        <input type="text" id="inpMelding" required>
+        <button type="submit">Send</button>
+    </form>
+
 
 </main>
 
@@ -75,7 +90,8 @@
 
     function visMelding(snapshot) {
         var melding = snapshot.val();
-        txtMeldinger.innerHTML += `<p><b>${melding.avsender}</b> : <i>${melding.tekst}</i></p>`;
+        txtMeldinger.innerHTML +=
+            `<img src="${melding.avsender}" alt=""><p><i>${melding.tekst}</i></p><br>`;
     }
     function regNyMelding(evt) {
         evt.preventDefault();
