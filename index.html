@@ -16,7 +16,9 @@
     }
     h1  {
         text-align: center;
-        font-size: 40px;
+        font-size: 80px;
+        display: block;
+        margin: auto;
     }
     input   {
         font-size: 25px;
@@ -27,7 +29,7 @@
     form {
         text-align: center;
     }
-    img {
+    .profil {
         width: 50px;
         height: 50px;
         display: inline-block;
@@ -49,13 +51,20 @@
         text-align: center;
     }
     #logo {
-        width: 50px;
+        width: 100px;
+        height: 100px;
     }
-    #inpAvsender {
+    #inpAvsender, #Bilde {
         width: 30px;
     }
     #inpMelding {
         width: 60%;
+    }
+    nav {
+        display: flex;
+    }
+    object img {
+        width: 100px;
     }
 
 </style>
@@ -76,9 +85,12 @@
 
 <main>
 
+    <nav>
     <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/wiOtxI3emiC.png" alt="messenger" id="logo">
     <h1>Messages</h1>
+    </nav>
     <article id="txtMeldinger">
+
 
 
     </article>
@@ -89,7 +101,10 @@
         <input type="text" id="inpAvsender" required>
         <label for="inpMelding">Melding</label>
         <input type="text" id="inpMelding" required>
+        <label for="Bilde">Bilde</label>
+        <input type="text" id="Bilde">
         <button type="submit">Send</button>
+
     </form>
 
     <p>Lim inn urlen til bildet der det står profilbilde</p>
@@ -102,27 +117,31 @@
     var inpAvsender = document.getElementById("inpAvsender");
     var inpMelding = document.getElementById("inpMelding");
     var txtMeldinger = document.getElementById("txtMeldinger");
+    var bilde = document.getElementById("Bilde")
     var database = firebase.database();
     var meldinger = database.ref("meldinger");
-    /*
-     var nyMelding ={
-         "avsender" : "Oscar",
-         "tekst" : "Hei på dei"
-     };
 
-     meldinger.push(nyMelding);
-     */
+        /*
+         var nyMelding ={
+             "avsender" : "Oscar",
+             "tekst" : "Hei på dei"
+         };
 
-    function visMelding(snapshot) {
-        var melding = snapshot.val();
-        txtMeldinger.innerHTML +=
-            `<article><img src="${melding.avsender}" alt=""><p><i>${melding.tekst}</i></p></article><br>`;
-    }
+         meldinger.push(nyMelding);
+         */
+
+        function visMelding(snapshot) {
+            var melding = snapshot.val();
+            txtMeldinger.innerHTML +=
+                `<article><img src="${melding.avsender}" alt="" class="profil"><p><i>${melding.tekst}</i>
+<object type="image/jpg"><img src="${melding.bilde}"></object></p></article><br>`;
+        }
     function regNyMelding(evt) {
         evt.preventDefault();
         var nyMelding ={
             "avsender" : inpAvsender.value,
-            "tekst" : inpMelding.value
+            "tekst" : inpMelding.value,
+            "bilde" : bilde.value
         };
 
         meldinger.push(nyMelding);
@@ -133,6 +152,11 @@
     skjema.onsubmit = regNyMelding;
 
 
+</script>
+
+
+<script>
+    <img src="Error.src" onerror="this.style.display='none'"/>
 </script>
 
 
