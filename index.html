@@ -9,7 +9,7 @@
         margin:0;
         box-sizing:border-box;
         padding:0;
-        Font-family:sans-serif;
+        Font-family:"Helvetica Neue";
     }
     body {
         background-color: white;
@@ -22,6 +22,7 @@
         font-size: 80px;
         display: block;
         margin: auto;
+
     }
     input   {
         font-size: 25px;
@@ -31,6 +32,9 @@
     }
     form {
         text-align: center;
+        border-top: 1px solid #E5E5E5;
+        padding-top: 20px;
+        background-color: #E9EBEE;
     }
     .profil {
         width: 50px;
@@ -48,10 +52,12 @@
         display: flex;
         flex-direction: row;
     }
-    p {
+    form ~ p {
         display: inline-block;
         line-height: 30px;
         text-align: center;
+        background-color: #E9EBEE;
+        width: 100%;
     }
     #logo {
         width: 100px;
@@ -65,6 +71,8 @@
     }
     nav {
         display: flex;
+        background-color: #4468B0;
+        border-bottom: 1px solid black;
     }
     object img {
         width: 100px;
@@ -89,8 +97,8 @@
 
 
     <nav>
-    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/wiOtxI3emiC.png" alt="messenger" id="logo">
-    <h1>Messages</h1>
+    <img src="https://s3.amazonaws.com/ionic-marketplace/facebook-messenger-clone/icon.png" alt="messenger" id="logo">
+
     </nav>
 
 <main>
