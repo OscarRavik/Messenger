@@ -5,6 +5,12 @@
     <title>Messenger</title>
 </head>
 <style>
+    *{
+        margin:0;
+        box-sizing:border-box;
+        padding:0;
+        Font-family:sans-serif;
+    }
     body {
         background-color: white;
     }
@@ -22,18 +28,25 @@
         text-align: center;
     }
     img {
-    width: 50px;
+        width: 50px;
         height: 50px;
         display: inline-block;
         border-radius: 50%;
     }
-    i {
-        border-radius: 30%;
+    article p {
+        border-radius: 5px;
         background-color: deepskyblue;
         padding: 10px 20px 10px 20px;
+        margin-left: 20px;
+    }
+    article article {
+        display: flex;
+        flex-direction: row;
     }
     p {
         display: inline-block;
+        line-height: 30px;
+        text-align: center;
     }
     #logo {
         width: 50px;
@@ -67,7 +80,10 @@
     <h1>Messages</h1>
     <article id="txtMeldinger">
 
+
     </article>
+
+    <div id="register">
     <form id="skjema">
         <label for="inpAvsender">Profilbilde</label>
         <input type="text" id="inpAvsender" required>
@@ -77,7 +93,7 @@
     </form>
 
     <p>Lim inn urlen til bildet der det står profilbilde</p>
-
+    </div>
 
 </main>
 
@@ -100,7 +116,7 @@
     function visMelding(snapshot) {
         var melding = snapshot.val();
         txtMeldinger.innerHTML +=
-            `<img src="${melding.avsender}" alt=""><p><i>${melding.tekst}</i></p><br>`;
+            `<article><img src="${melding.avsender}" alt=""><p><i>${melding.tekst}</i></p></article><br>`;
     }
     function regNyMelding(evt) {
         evt.preventDefault();
